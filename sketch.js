@@ -14,8 +14,8 @@ function setup() {
   // Determine block positioning based on screen size
   let blockX = 50;
   let blockY = 50;
-  const blockWidth = 100;
-  const blockHeight = 100;
+  const blockWidth = 140;
+  const blockHeight = 140;
   const spaceBetweenBlocks = 20; // Space between blocks
 
   for (let i = 0; i < 8; i++) {
@@ -53,7 +53,8 @@ function draw() {
 
     // Voeg tekst toe aan het blok
     fill(0); // Zwart voor tekstkleur
-    textSize(16);
+    textSize(22);
+    textFont("Exo");
     textAlign(CENTER, CENTER);
     text(block.label, block.x + block.width / 2, block.y + block.height / 2);
   }
