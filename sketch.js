@@ -7,22 +7,41 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   noLoop();
 
-  // Define colors for the blocks
+  // Define colors and labels for the blocks
   const colors = ['#37B6FF', '#FF942A', '#F1C40F', '#FF6EB2', '#00CC66','#FF9077' ,'#00CCB8', '#FFFD99'];
   const labels = ['Price', 'Quality', 'Availability', 'Selection', 'Functionality', 'Service', 'Partnership', 'Brand'];
 
-  // Create the blocks with labels
+  // Determine block positioning based on screen size
+  let blockX = 50;
+  let blockY = 50;
+  const blockWidth = 100;
+  const blockHeight = 100;
+  const spaceBetweenBlocks = 20; // Space between blocks
+
   for (let i = 0; i < 8; i++) {
+    // Check if the screen is narrow (like a phone)
+    if (windowWidth < 600) {
+      // Stack blocks vertically for narrow screens
+      blockX = (windowWidth - blockWidth) / 2; // Center blocks horizontally
+      blockY = i * (blockHeight + spaceBetweenBlocks) + 50;
+    } else {
+      // Place blocks side by side for wider screens
+      blockX = i * (blockWidth + spaceBetweenBlocks) + 50;
+      blockY = 50;
+    }
+
+    // Create the blocks with labels
     blocks.push({
-      x: i * 120 + 50, 
-      y: 50, 
-      width: 100, 
-      height: 100, 
+      x: blockX, 
+      y: blockY, 
+      width: blockWidth, 
+      height: blockHeight, 
       color: colors[i % colors.length], 
-      label: labels[i] // Voeg label toe aan elk blok
+      label: labels[i]
     });
   }
 }
+
 
 function draw() {
   background(255);
